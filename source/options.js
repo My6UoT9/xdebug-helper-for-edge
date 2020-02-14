@@ -21,7 +21,7 @@
 			idekey = "XDEBUG_ECLIPSE";
 		}
 
-		if (idekey == "XDEBUG_ECLIPSE" || idekey == "netbeans-xdebug" || idekey == "macgdbp" || idekey == "PHPSTORM")
+		if (idekey == "XDEBUG_ECLIPSE" || idekey == "netbeans-xdebug" || idekey == "macgdbp" || idekey == "PHPSTORM" || idekey == "xdebug-atom" )
 		{
 			$("#ide").val(idekey);
 			$("#idekey").prop('disabled', true);
