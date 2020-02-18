@@ -12,7 +12,7 @@ Alt+Shift+X toggles the debugging state.
 
 How to install this extension?
 ------------------------------
-**Stable version:** Go to the [Microsoft Edge Addons](https://microsoftedge.microsoft.com/)
+**Stable version:** Go to the [Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/ggnngifabofaddiejjeagbaebkejomen)
 and click "Get".
 
 How do I contribute?
