@@ -4,7 +4,7 @@ var xdebug = (function() {
 	{
 		var exp = new Date();
 		exp.setTime(exp.getTime() + (days * 24 * 60 * 60 * 1000));
-		document.cookie = name + "=" + value + "; expires=" + exp.toGMTString() + "; path=/";
+		document.cookie = name + "=" + value + "; expires=" + exp.toGMTString() + "; path=/; SameSite=Strict";
 	}
 
 	// Get the content in a cookie
