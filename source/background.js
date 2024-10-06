@@ -8,11 +8,9 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab)
 	}
 
 	// Prep some variables
-	var ideKey = "XDEBUG_ECLIPSE",
-		match = true,
+	let ideKey = "XDEBUG_ECLIPSE",
 		traceTrigger = ideKey,
-		profileTrigger = ideKey,
-		domain;
+		profileTrigger = ideKey;
 
 	// Check if localStorage is available and get the settings out of it
 	if (localStorage)
@@ -57,11 +55,11 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab)
 
 chrome.commands.onCommand.addListener(function(command)
 {
-	if ('toggle_debug_action' == command)
+	if ('toggle_debug_action' === command)
 	{
-		var ideKey = "XDEBUG_ECLIPSE";
-		var traceTrigger = ideKey;
-		var profileTrigger = ideKey;
+		let ideKey = "XDEBUG_ECLIPSE";
+		let traceTrigger = ideKey;
+		let profileTrigger = ideKey;
 
 		// Check if localStorage is available and get the settings out of it
 		if (localStorage)
@@ -86,7 +84,7 @@ chrome.commands.onCommand.addListener(function(command)
 		chrome.tabs.query({ active: true, windowId: chrome.windows.WINDOW_ID_CURRENT }, function(tabs)
 		{
 			// Do nothing when there is no active tab atm
-			if (tabs.length == 0) {
+			if (tabs.length === 0) {
 				return;
 			}
 
@@ -125,11 +123,11 @@ chrome.commands.onCommand.addListener(function(command)
 	}
 });
 
-// Will not be called, if popup is disabled, so not needed to wrap this in a if statement
+// Will not be called, if popup is disabled, so not needed to wrap this in an if statement
 chrome.browserAction.onClicked.addListener((tab) => {
-    var ideKey = "XDEBUG_ECLIPSE";
-    var traceTrigger = ideKey;
-    var profileTrigger = ideKey;
+    let ideKey = "XDEBUG_ECLIPSE";
+    let traceTrigger = ideKey;
+    let profileTrigger = ideKey;
 
     // Check if localStorage is available and get the settings out of it
     if (localStorage)
@@ -216,17 +214,17 @@ function updateIcon(status, tabId)
     let title = (localStorage.xdebugDisablePopup === '1')
 		? 'Debugging disabled' : 'Debugging, profiling & tracing disabled';
 
-    if (status == 1)
+    if (status === 1)
 	{
 		title = "Debugging enabled";
 		image = "images/bug.png";
 	}
-	else if (status == 2)
+	else if (status === 2)
 	{
 		title = "Profiling enabled";
 		image = "images/clock.png";
 	}
-	else if (status == 3)
+	else if (status === 3)
 	{
 		title = "Tracing enabled";
 		image = "images/script.png";
@@ -243,24 +241,6 @@ function updateIcon(status, tabId)
 		tabId: tabId,
 		path: image
 	});
-}
-
-/**
- * @deprecated
- * @todo to remove silver
- */
-function isValueInArray(arr, val)
-{
-	for (i = 0; i < arr.length; i++)
-	{
-		var re = new RegExp(arr[i], "gi");
-		if (re.test(val))
-		{
-			return true;
-		}
-	}
-
-	return false;
 }
 
 // Disable / Enable Popup by localStorage

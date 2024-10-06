@@ -1,7 +1,7 @@
 /* Base styles */
 html,
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: system-ui;
   font-size: 14px;
   line-height: 1.4em;
   background-color: #e2e1e0;
@@ -95,23 +95,23 @@ a {
 }
 
 .color--green {
-  color: #4CAF50;
+  fill: #4CAF50;
 }
 
 .color--blue {
-  color: #039BE5;
+  fill: #039BE5;
 }
 
 .color--deep-purple {
-  color: #673AB7;
+  fill: #673AB7;
 }
 
 .color--gray {
-  color: #6D6D6D;
+  fill: #6D6D6D;
 }
 
-.material-icons {
-  font-size: 18px;
+.icons {
+  width: 18px;
   line-height: 0;
   position: relative;
   top: 4px;
@@ -123,4 +123,29 @@ a {
   color: #5cb85c;
   font-weight: bold;
   margin-left: 5px;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+  }
+  .togglelist li a {
+    background-color: #262626;
+    color: #d7d7d7;
+  }
+
+  .togglelist li a:hover, .togglelist li a:focus, .togglelist li a:hover .material-icons {
+    background-color: #0a141f;
+    color: #ffffff;
+  }
+
+  .togglelist li .active {
+    background: #002133;
+    color: #ffffff;
+  }
+
+  .togglelist li .active .material-icons {
+    color: #dadada;
+  }
 }

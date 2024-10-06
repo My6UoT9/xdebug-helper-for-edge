@@ -1,8 +1,8 @@
-var xdebug = (function() {
+const xdebug = (function() {
 	// Set a cookie
 	function setCookie(name, value, days)
 	{
-		var exp = new Date();
+		const exp = new Date();
 		exp.setTime(exp.getTime() + (days * 24 * 60 * 60 * 1000));
 		document.cookie = name + "=" + value + "; expires=" + exp.toGMTString() + "; path=/; SameSite=Strict";
 	}
@@ -10,20 +10,20 @@ var xdebug = (function() {
 	// Get the content in a cookie
 	function getCookie(name)
 	{
-		// Search for the start of the goven cookie
-		var prefix = name + "=",
+		// Search for the start of the given cookie
+		let prefix = name + "=",
 			cookieStartIndex = document.cookie.indexOf(prefix),
 			cookieEndIndex;
 
 		// If the cookie is not found return null
-		if (cookieStartIndex == -1)
+		if (cookieStartIndex === -1)
 		{
 			return null;
 		}
 
 		// Look for the end of the cookie
 		cookieEndIndex = document.cookie.indexOf(";", cookieStartIndex + prefix.length);
-		if (cookieEndIndex == -1)
+		if (cookieEndIndex === -1)
 		{
 			cookieEndIndex = document.cookie.length;
 		}
@@ -39,11 +39,11 @@ var xdebug = (function() {
 	}
 
 	// Public methods
-	var exposed = {
+	const exposed = {
 		// Handles messages from other extension parts
 		messageListener : function(request, sender, sendResponse)
 		{
-			var newStatus,
+			let newStatus,
 				idekey = "XDEBUG_ECLIPSE",
 				traceTrigger = idekey,
 				profileTrigger = idekey;
@@ -63,15 +63,15 @@ var xdebug = (function() {
 			}
 
 			// Execute the requested command
-			if (request.cmd == "getStatus")
+			if (request.cmd === "getStatus")
 			{
 				newStatus = exposed.getStatus(idekey, traceTrigger, profileTrigger);
 			}
-			else if (request.cmd == "toggleStatus")
+			else if (request.cmd === "toggleStatus")
 			{
 				newStatus = exposed.toggleStatus(idekey, traceTrigger, profileTrigger);
 			}
-			else if (request.cmd == "setStatus")
+			else if (request.cmd === "setStatus")
 			{
 				newStatus = exposed.setStatus(request.status, idekey, traceTrigger, profileTrigger);
 			}
@@ -83,17 +83,17 @@ var xdebug = (function() {
 		// Get current state
 		getStatus : function(idekey, traceTrigger, profileTrigger)
 		{
-			var status = 0;
+			let status = 0;
 
-			if (getCookie("XDEBUG_SESSION") == idekey)
+			if (getCookie("XDEBUG_SESSION") === idekey)
 			{
 				status = 1;
 			}
-			else if (getCookie("XDEBUG_PROFILE") == profileTrigger)
+			else if (getCookie("XDEBUG_PROFILE") === profileTrigger)
 			{
 				status = 2;
 			}
-			else if (getCookie("XDEBUG_TRACE") == traceTrigger)
+			else if (getCookie("XDEBUG_TRACE") === traceTrigger)
 			{
 				status = 3;
 			}
@@ -104,7 +104,7 @@ var xdebug = (function() {
 		// Toggle to the next state
 		toggleStatus : function(idekey, traceTrigger, profileTrigger)
 		{
-			var nextStatus = (exposed.getStatus(idekey, traceTrigger, profileTrigger) + 1) % 4;
+			const nextStatus = (exposed.getStatus(idekey, traceTrigger, profileTrigger) + 1) % 4;
 			return exposed.setStatus(nextStatus, idekey, traceTrigger, profileTrigger);
 		},
 

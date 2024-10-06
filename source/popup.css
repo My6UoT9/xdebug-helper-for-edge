@@ -1,6 +1,6 @@
 html,
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: system-ui;
   font-size: 13px;
   line-height: 1.4em;
 }
@@ -69,17 +69,49 @@ body {
 }
 
 .color--green {
-  color: #4CAF50;
+  fill: #4CAF50;
 }
 
 .color--blue {
-  color: #039BE5;
+  fill: #039BE5;
 }
 
 .color--deep-purple {
-  color: #673AB7;
+  fill: #673AB7;
 }
 
 .color--gray {
-  color: #6D6D6D;
+  fill: #6D6D6D;
+}
+
+.icons {
+  width: 18px;
+  line-height: 0;
+  position: relative;
+  top: 4px;
+  margin-right: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+  }
+  .togglelist li a {
+    background-color: #262626;
+    color: #d7d7d7;
+  }
+
+  .togglelist li a:hover, .togglelist li a:focus, .togglelist li a:hover .material-icons {
+    background-color: #0a141f;
+    color: #ffffff;
+  }
+
+  .togglelist li .active {
+    background: #002133;
+    color: #ffffff;
+  }
+
+  .togglelist li .active .material-icons {
+    color: #dadada;
+  }
 }
